@@ -9,6 +9,7 @@ dotenv.config();
 connectDatabase();
 
 const foodHandler = require("./routes/foodHandler");
+const searchHandler = require("./routes/searchHandler");
 
 app.use("/images", express.static("images"));
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/", foodHandler);
+app.use("/", searchHandler);
 
 const port = process.env.PORT || 5000;
 

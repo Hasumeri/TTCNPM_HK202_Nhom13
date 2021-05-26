@@ -12,11 +12,6 @@ router.get("/foods", async (req, res) => {
 });
 
 
-/**
- * Find one specific food with foodID
- * null if find none
- */
-
 router.get("/foods/:foodID", async (req, res) => {
     await FoodSchema.findOne({ foodID: req.params.foodID },
         (err, data) => {
@@ -30,9 +25,5 @@ router.get("/foods/:foodID", async (req, res) => {
         }
     );
 });
-
-
-
-
 
 module.exports = router

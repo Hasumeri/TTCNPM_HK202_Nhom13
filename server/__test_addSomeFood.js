@@ -27,7 +27,7 @@ var list = [
     {
         foodID: "20202",
         foodID: "20202",
-        name: "Cá hội áp chảo",
+        name: "Cá hời áp chảo",
         price: 256000,
         type: "Main",
         imageURL: "images/cahoiapchao.jpg",
