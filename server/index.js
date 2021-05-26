@@ -1,14 +1,22 @@
-const express = require('express')
-const connectDatabase = require('./config/database')
-const authentication = require('./routes/authentication')
-const food = require('./routes/food')
+const express = require("express");
+const connectDatabase = require("./config/database")
+const app = express();
+const dotenv = require("dotenv");
+const fs = require('fs');
 
+dotenv.config();
 
-const server = express()
-server.use(express.json())
-const PORT = 5000
-connectDatabase()
-server.use('/', food)
-server.use('/authentication', authentication)
+connectDatabase();
 
-server.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+const foodHandler = require("./routes/foodHandler");
+
+app.use("/images", express.static("images"));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use("/", foodHandler);
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
