@@ -7,7 +7,7 @@ class Signin extends Component {
     render() {
         return (
             <div className="content">
-                <form className="container" name="signin"> 
+                <form className="form-sign container" name="signin"> 
                     <div className="form-group border-bottom">
                         <h2 className="text-center">Sign In</h2>    
                     </div>

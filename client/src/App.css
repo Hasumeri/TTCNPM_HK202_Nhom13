@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* CSS cua Component Signup Signin */
+.content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30%;
+  width: 40%;
+}
+
+.form-sign {
+  font-size: 18px;
+  padding: 20px;
+  background-color: #b2c4d8;
+  border: 5px solid #458bdb;
+}
+
+.form-signup-success {
+  font-size: 18px;
+  padding: 20px;
+  border: 5px solid #458bdb;
+  background-color: white;
+}
+small{
+  color: red;
+}
