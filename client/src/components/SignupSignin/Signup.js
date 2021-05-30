@@ -10,7 +10,7 @@ class Signup extends Component {
         this.state = {
            fields: {},
            error: {},
-           success:false,
+           //success:false,
         }
     }
 
@@ -30,24 +30,20 @@ class Signup extends Component {
 
         //validate first name
         if(!fields['fname']) {
-            error['fname'] = 'First Name is required.';
-          
+            error['fname'] = 'First Name is required.';          
         }           
         
         //validate last name
         if(!fields['lname']) {
-            error['lname'] = 'Last Name is required.';
-            
+            error['lname'] = 'Last Name is required.';           
         }            
 
         //validate email
         if(!fields['email']) {
-            error['email'] = 'Email is required.';
-           
+            error['email'] = 'Email is required.';           
         } 
         else if(!/\S+@\S+\.\S+/.test(fields['email'])){
-            error['email'] = 'Email is invalid.';
-            
+            error['email'] = 'Email is invalid.';           
         }
         /*else if(typeof fields["email"] !== "undefined"){
             let lastAtPos = fields["email"].lastIndexOf('@');
@@ -59,53 +55,47 @@ class Signup extends Component {
 
         //validate password
         if(!fields['password']) {
-            error['password'] = 'Password is required.';
-            
+            error['password'] = 'Password is required.';            
         } else if (fields['password'].length < 5) {
-            error['password'] = "Password must be more than 5 characters.";
-            
+            error['password'] = "Password must be more than 5 characters.";            
         }
 
         //validate confirmpassword
         if(!fields['confirmpassword']) {
-            error['confirmpassword'] = 'Confirm Password is required.';
-            
+            error['confirmpassword'] = 'Confirm Password is required.';           
         } else if(fields['confirmpassword'] != fields['password']) {
-            error['confirmpassword'] = 'Password do not match.';
-            
+            error['confirmpassword'] = 'Password do not match.';           
         }
 
         //validate gender
         if(!fields['gender']){
-            error['gender'] = 'Gender is required.';
-           
+            error['gender'] = 'Gender is required.';          
         }
         if(!fields['birthday']){
-            error['birthday'] = 'Birthday is required.';
-            
+            error['birthday'] = 'Birthday is required.';            
         }
         this.setState({
             error:error,
         })
 
-        // Sign up successfully
-        if(Object.keys(error).length === 0) {
-            //console.log(isOb); 
-            this.setState({
-                success:true
-            })
-        }
+        //Sign up successfully
+        // if(Object.keys(error).length === 0) {
+        //     //console.log(isOb); 
+        //     this.setState({
+        //         success:true
+        //     })
+        // }
         
     }
     render() {
         
-        if(this.state.success==true){
-            return <Redirect to={"/signupsuccess"} />
-        }
+        // if(this.state.success==true){
+        //     return <Redirect to={"/signupsuccess"} />
+        // }
             
         return (
             <div className="content">
-                <form className="form-sign container" name="registration"  >
+                <form className="form-sign container" name="registration" onSubmit={this.handleSubmit} >
                     <div className="form-group border-bottom">
                         <h1 className="text-center">Sign Up</h1>    
                     </div><br />
@@ -162,13 +152,13 @@ class Signup extends Component {
 
                     <br />
                     <div className="form-group">
-                    <button onClick={this.handleSubmit}><Link to="/signupsuccess">Sign up</Link></button>
+                        {/* <button onClick={this.handleSubmit}><Link to="/signupsuccess">Sign up</Link></button> */}
+                        <button type="submit" className="btn btn-primary btn-block">Sign up</button>
                     </div>
                     
                     <br />
                     <div className="form-group">
-                        Have already an account? <Link to="/signin">Sign In</Link>
-                        
+                        Have already an account? <Link to="/signin">Sign In</Link>                        
                     </div>   
                     
                 </form>
