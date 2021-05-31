@@ -5,16 +5,16 @@ const verifyToken = (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1]
 
     if (!token)
-        return res.status(401).json({success: false, message: 'Access token not found'})
+        return res.json({success: false, message: 'Access token not found'})
     
     try {
-        const decoded = jsonwebtoken.verify(token, process.env.ACCESS_TOKEN_SECRET)
-        req.userId = decoded.userId
+        const decodedData = jsonwebtoken.verify(token, process.env.ACCESS_TOKEN)
+        req.userId = decodedData.userId
         next()
     }
-    catch(error) {
+    catch (error) {
         console.log(error)
-        return res.status(403).json({success: false, message: 'Invalid token'})
+        return res.json({success: false, message: 'Invalid token'})
     }
 }
 
