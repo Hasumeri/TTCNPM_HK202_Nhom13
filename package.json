@@ -4,6 +4,7 @@
   "description": "Restaurant Web application",
   "main": "server/index.js",
   "scripts": {
+    "compl": "tsc server/schemas/_Order.ts --outFile server/schemas/_Order.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npm run server --prefix server",
     "client": "npm run start --prefix client",
@@ -12,6 +13,7 @@
   "author": "Nhom13",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^15.6.1",
     "concurrently": "^4.1.2"
   }
 }

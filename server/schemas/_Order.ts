@@ -2,32 +2,33 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 enum Status {
-    Waiting = "Waiting",
-    Pending = "Pending",
-    Processing = "Processing",
-    Completed = "Completed",
+    Waiting = "waiting", // Waiting to be process?
+    Pending = "pending", // Waiting to be process?
+    Processing = "processing", // Being Process at Kitchen
+    Completed = "completed", // Complete
 }
 
 class OrderItem {
     'use strict'
     private itemID: string;
+    private price: number;
     private quantity: number;
-    private status: Status;
-    constructor(id, qty, stat) {
+
+    constructor(id, qty = 1, price: 0) {
         this.itemID = id;
         this.quantity = qty;
-        this.status = stat;
+        this.price = price;
     }
 }
 
 const OrderSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
 
     cart: {
-        type: OrderItem, // Object
+        type: Object,
         required: true
     },
 
@@ -39,4 +40,6 @@ const OrderSchema = new Schema({
 
 })
 
-module.exports = mongoose.model('Order', OrderSchema)
+module.exports.OrderSchema = mongoose.model('order', OrderSchema);
+module.exports.OrderItem = OrderItem;
+module.exports.Status = Status;

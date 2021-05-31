@@ -94,4 +94,4 @@ for (i = 0; i < list.length; i++) {
     })).save();
 }
 
-mongoose.connection.close();
+mongoose.connection.close().then(_ =>console.log("connection closed"));
