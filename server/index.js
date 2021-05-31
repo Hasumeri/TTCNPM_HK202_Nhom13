@@ -1,24 +1,28 @@
-const express = require("express");
-const connectDatabase = require("./config/database")
-const app = express();
-const dotenv = require("dotenv");
-const fs = require('fs');
+const express = require('express')
+const cors = require('cors')
+const connectDatabase = require('./config/database')
+const authen = require('./api/authen')
 
-dotenv.config();
+require('dotenv').config()
 
-connectDatabase();
+connectDatabase()
+const server = express()
+server.use(cors())
+server.use(express.json())
 
-const foodHandler = require("./routes/foodHandler");
-const searchHandler = require("./routes/searchHandler");
+const foodHandler = require("./api/foodHandler");
+const searchHandler = require("./api/searchHandler");
 
-app.use("/images", express.static("images"));
+server.use("/images", express.static(__dirname +"/images"));
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+server.use(express.urlencoded({extended: false}));
+server.use(express.json());
 
-app.use("/", foodHandler);
-app.use("/", searchHandler);
+server.use("/", foodHandler);
+server.use("/", searchHandler);
 
-const port = process.env.PORT || 5000;
+server.use('/api/authen', authen)
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+const PORT = 5000
+
+server.listen(PORT, () => console.log(`Server started on port ${PORT}`))

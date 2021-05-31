@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const FoodSchema = require("../models/FoodSchema")
-const verifyToken = require('../middleware/authorization')
+const FoodSchema = require("../schemas/Food")
+const verifyToken = require('../middleware/au')
 
 router.get("/search", async (req, res) => {
     if (Object.keys(req.query).length === 0) {

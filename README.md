@@ -8,11 +8,11 @@ Vd: với case-insensitve
     search "gà" -> món ăn chứa chữ Gà, 
     search "ga" -> tìm không ra.
 
-## Setup và chạy server.
+## Setup và chạy server, client.
 ```bash
 npm install
-cd server
-npm run server
+npm run dev
+```
 ```
 
 ## Sử dụng và vọc.
