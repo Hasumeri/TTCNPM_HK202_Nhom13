@@ -1,5 +1,5 @@
 console.log("Add some Foods to database for testing...");
-const FoodSchema = require("./models/FoodSchema")
+const FoodSchema = require("./schemas/Food")
 const mongoose = require("mongoose");
 require("dotenv").config()
 
