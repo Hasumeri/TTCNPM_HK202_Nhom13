@@ -53,7 +53,7 @@ const Signin = () => {
                         <Form.Control type='text' name='email' placeholder='Email' required value={email} onChange={onChangeSigninForm} />
                     </Form.Group>
                     <Form.Group className='mb-3'>
-                        <Form.Control type='password' name='password' placeholder='Password' minLength='5' maxLength='20' required value={password} onChange={onChangeSigninForm} />
+                        <Form.Control type='password' name='password' placeholder='Password' required value={password} onChange={onChangeSigninForm} />
                     </Form.Group>
                     <Form.Text className="text-muted mb-3">
                         We'll never share your email with anyone else.
