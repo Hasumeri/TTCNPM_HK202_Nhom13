@@ -1,3 +1,3 @@
 const Order = require("server/schemas/Order")
 
-let obj = new Order()
+let obj = new Order

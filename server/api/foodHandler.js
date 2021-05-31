@@ -4,14 +4,13 @@ const FoodSchema = require("../schemas/Food")
 
 // Menu Handler
 router.get("/foods", async (req, res) => {
-    console.log("ALL")
     const food = await FoodSchema.find();
     res.json(food);
 });
 
 
 router.get("/foods/:foodID", async (req, res) => {
-    await FoodSchema.findOne({ foodID: req.params.foodID },
+    await FoodSchema.findOne({foodID: req.params.foodID},
         (err, data) => {
             if (err) {
                 console.log(err);
