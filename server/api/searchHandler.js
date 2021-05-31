@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const FoodSchema = require("../schemas/Food")
-const verifyToken = require('../middleware/au')
 
 router.get("/search", async (req, res) => {
     if (Object.keys(req.query).length === 0) {
@@ -18,10 +17,8 @@ router.get("/search", async (req, res) => {
         await FoodSchema.find(query,
             function (err, docs) {
                 if (err) {
-                    console.log(err);
                     return res.send(500, 'Something Went wrong with Retrieving data');
                 } else {
-                    console.log(docs);
                     res.json(docs);
                 }
             }
