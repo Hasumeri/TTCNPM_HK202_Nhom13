@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const FoodSchema = require("../schemas/FoodSchema")
+const FoodSchema = require("../schemas/Food")
 
 router.get("/search", async (req, res) => {
     if (Object.keys(req.query).length === 0) {

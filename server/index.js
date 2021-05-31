@@ -13,13 +13,13 @@ server.use(express.json())
 const foodHandler = require("./api/foodHandler");
 const searchHandler = require("./api/searchHandler");
 
-app.use("/images", express.static("images"));
+server.use("/images", express.static("images"));
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
 
-app.use("/", foodHandler);
-app.use("/", searchHandler);
+server.use("/", foodHandler);
+server.use("/", searchHandler);
 
 server.use('/', food)
 server.use('/api/authen', authen)
