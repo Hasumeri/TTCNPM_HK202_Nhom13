@@ -10,6 +10,16 @@ const server = express()
 server.use(cors())
 server.use(express.json())
 
+const foodHandler = require("./api/foodHandler");
+const searchHandler = require("./api/searchHandler");
+
+app.use("/images", express.static("images"));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use("/", foodHandler);
+app.use("/", searchHandler);
 
 server.use('/', food)
 server.use('/api/authen', authen)
