@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Status;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+let Status;
 (function (Status) {
     Status["Waiting"] = "waiting";
     Status["Pending"] = "pending";
