@@ -6,13 +6,17 @@ const verifyToken = (req, res, next) => {
 
     if (!token)
         return res.json({success: false, message: 'Access token not found'})
-    
+
+    let buff = Buffer.from(authHeader.split(' ')[1], 'base64')
+        .toString()
+    console.log(buff)
+
     try {
-        const decodedData = jsonwebtoken.verify(token, process.env.ACCESS_TOKEN)
+        const decodedData = jsonwebtoken.verify(token, process.env.ACCESS_TOKEN_SECRET)
         req.userId = decodedData.userId
+
         next()
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
         return res.json({success: false, message: 'Invalid token'})
     }

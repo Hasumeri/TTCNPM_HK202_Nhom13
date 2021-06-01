@@ -11,13 +11,13 @@ enum Status {
 class OrderItem {
     'use strict'
     private itemID: string;
-    private price: number;
-    private quantity: number;
+    private itemPrice: number;
+    private qty: number;
 
-    constructor(id, qty = 1, price: 0) {
+    constructor(id, qty = 1, per_item_price: 0) {
         this.itemID = id;
-        this.quantity = qty;
-        this.price = price;
+        this.itemPrice = per_item_price;
+        this.qty = qty;
     }
 }
 
