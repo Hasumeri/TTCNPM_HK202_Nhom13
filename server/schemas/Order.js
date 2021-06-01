@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-let Status;
+// noinspection JSUnusedGlobalSymbols
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var Status;
 (function (Status) {
     Status["Waiting"] = "waiting";
     Status["Pending"] = "pending";
@@ -8,28 +9,30 @@ let Status;
     Status["Completed"] = "completed";
 })(Status || (Status = {}));
 var OrderItem = /** @class */ (function () {
-    function OrderItem(id, qty, price) {
+    function OrderItem(id, qty, per_item_price) {
         if (qty === void 0) { qty = 1; }
         this.itemID = id;
-        this.quantity = qty;
-        this.price = price;
+        this.itemPrice = per_item_price;
+        this.qty = qty;
     }
     return OrderItem;
 }());
 var OrderSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'User'
     },
-    cart: {
-        type: Object,
+    itemList: {
+        type: Schema.Types.Array,
         required: true
     },
     status: {
-        type: String,
+        type: Schema.Types.String,
         "enum": ['waiting', 'pending', 'processing', 'completed'],
         require: true
     }
+}, {
+    timestamps: true
 });
 module.exports.OrderSchema = mongoose.model('order', OrderSchema);
 module.exports.OrderItem = OrderItem;

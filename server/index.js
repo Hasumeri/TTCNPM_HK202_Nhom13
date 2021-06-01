@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
+const payment = require('./api/testing_pushOrderHandler')
 
 require('dotenv').config()
 
@@ -20,6 +21,7 @@ server.use(express.json());
 
 server.use("/", foodHandler);
 server.use("/", searchHandler);
+server.use("/orders", payment);
 
 server.use('/api/authen', authen)
 

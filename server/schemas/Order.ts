@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
@@ -22,23 +24,25 @@ class OrderItem {
 }
 
 const OrderSchema = new Schema({
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
 
-    cart: {
-        type: Object,
-        required: true
-    },
+        itemList: {
+            type: Schema.Types.Array,
+            required: true
+        },
 
-    status: {
-        type: String,
-        enum: ['waiting', 'pending', 'processing', 'completed'],
-        require: true
+        status: {
+            type: Schema.Types.String,
+            enum: ['waiting', 'pending', 'processing', 'completed'],
+            require: true
+        },
     },
-
-})
+    {
+        timestamps: true,
+    })
 
 module.exports.OrderSchema = mongoose.model('order', OrderSchema);
 module.exports.OrderItem = OrderItem;
