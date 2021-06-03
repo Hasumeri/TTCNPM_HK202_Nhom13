@@ -30,10 +30,13 @@ const Signup = () => {
     
     const signup = async event => {
         event.preventDefault()
-        if (confirmPassword !== password) {
+
+        // validate email
+        if(!/\S+@\S+\.\S+/.test(email)) {
+            setAlert({type: 'danger', message: 'Email is invalid.'});
+        } else if (confirmPassword !== password) {
             setAlert({type: 'danger', message: 'Confirm password does not match'})
         }
-        //else if
         else {
             const signupData = await sendSignupForm(signupForm)
             try {    
