@@ -4,7 +4,7 @@ import Header from './Header'
 
 const Home = () => {
     return (
-        <div className='col-md-8 col-lg-6 mx-auto d-block'>
+        <div className='col-md-10 col-lg-8 mx-auto d-block'>
             <Header />
             <p>Menu</p>
         </div>

@@ -27,7 +27,7 @@ const Signin = () => {
         [event.target.name]: event.target.value
     })
     
-    const signin = async event => {
+    const signin = async (event) => {
         event.preventDefault()
         const signinData = await sendSigninForm(signinForm)
         try {    
@@ -44,7 +44,7 @@ const Signin = () => {
     }
 
     return (
-        <div className='col-md-8 col-lg-6 mx-auto d-block'>
+        <div className='col-md-10 col-lg-8 mx-auto d-block'>
             <Header />
             <div>
                 <Form onSubmit={signin}>
