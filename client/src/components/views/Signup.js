@@ -28,7 +28,7 @@ const Signup = () => {
         [event.target.name]: event.target.value
     })
     
-    const signup = async event => {
+    const signup = async (event) => {
         event.preventDefault()
 
         // validate email
@@ -56,7 +56,7 @@ const Signup = () => {
     }
 
     return (
-        <div className='col-md-8 col-lg-6 mx-auto d-block'>
+        <div className='col-md-10 col-lg-8 mx-auto d-block'>
             <Header />
             <div>
                 <Form onSubmit={signup}>

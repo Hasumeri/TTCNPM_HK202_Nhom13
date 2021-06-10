@@ -21,7 +21,7 @@ const UserContextProvider = ({children}) => {
             const response = await axios.get(`${apiUrl}/authen`)
             if (response.data.success) {
                 setUserState({
-                    isAuthen:true,
+                    isAuthen: true,
                     user: response.data.user
                 })
             }
@@ -64,7 +64,16 @@ const UserContextProvider = ({children}) => {
         }
     }
 
-    const UserContextData = {sendSignupForm, sendSigninForm, userState}
+    const userSignout = () => {
+        localStorage.removeItem(TOKEN)
+        setToken(null)
+        setUserState({
+            isAuthen: false,
+            user: null
+        })
+    }
+
+    const UserContextData = {sendSignupForm, sendSigninForm, userSignout, userState}
 
     return (
         <UserContext.Provider value={UserContextData}>
