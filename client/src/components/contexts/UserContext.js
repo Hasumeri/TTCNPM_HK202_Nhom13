@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import axios from 'axios'
-import { createContext, useEffect } from 'react'
 import { apiUrl, TOKEN } from '../utils/constants'
 import setToken from '../utils/setToken'
 
