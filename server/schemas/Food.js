@@ -33,4 +33,4 @@ const FoodSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('foods', FoodSchema)
+module.exports = mongoose.model('Food', FoodSchema)

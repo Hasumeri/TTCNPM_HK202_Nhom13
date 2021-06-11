@@ -6,7 +6,7 @@ const FoodSchema = require("../schemas/Food")
 router.get("/foods", async (req, res) => {
     console.log("ALL")
     const food = await FoodSchema.find();
-    res.json(food);
+    res.json( {success: true, food} );
 });
 
 

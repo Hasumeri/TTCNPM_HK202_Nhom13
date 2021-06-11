@@ -18,11 +18,13 @@ server.use("/images", express.static("images"));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 
-server.use("/", foodHandler);
-server.use("/", searchHandler);
+// server.use("/", foodHandler);
+// server.use("/", searchHandler);
 
 server.use('/', food)
 server.use('/api/authen', authen)
+server.use('/api/foodHandler', foodHandler)
+
 
 const PORT = 5000
 
