@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
 import Header from './Header'
 import { FoodContext } from '../contexts/FoodContext'
-import { Card, Button, Modal } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 const Home = () => {
     const {foodState: {food}, getFood} = useContext(FoodContext)

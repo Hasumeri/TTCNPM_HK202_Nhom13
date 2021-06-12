@@ -17,7 +17,7 @@ const UserContextProvider = ({children}) => {
             setToken(localStorage[TOKEN])
         }
         try {
-            const response = await axios.get(`${apiUrl}/authen`)
+            const response = await axios.get(`${apiUrl}/authen/user`)
             if (response.data.success) {
                 setUserState({
                     isAuthen: true,
@@ -39,7 +39,7 @@ const UserContextProvider = ({children}) => {
 
     const sendSignupForm = async (signupForm) => {
         try {
-            const response = await axios.post(`${apiUrl}/authen/signup`, signupForm)
+            const response = await axios.post(`${apiUrl}/authen/user/signup`, signupForm)
             return response.data
         }
         catch (error) {
@@ -50,7 +50,7 @@ const UserContextProvider = ({children}) => {
 
     const sendSigninForm = async (signinForm) => {
         try {
-            const response = await axios.post(`${apiUrl}/authen/signin`, signinForm)
+            const response = await axios.post(`${apiUrl}/authen/user/signin`, signinForm)
             if (response.data.success) {
                 localStorage.setItem(TOKEN, response.data.encodedToken)
             }
