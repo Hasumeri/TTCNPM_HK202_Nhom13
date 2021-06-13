@@ -4,32 +4,32 @@ const Schema = mongoose.Schema
 const FoodSchema = new Schema({
     foodID : {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     name: {
         type: String,
-        require: true,
+        required: true,
     },
     price: {
-        type: String,
-        require: true
+        type: Number,
+        required: true
     },
     imageURL: {
         type: String,
-        require: true
+        required: true
     },
     type: {
         type: String,
-        require: true
+        required: true
     },
     description: {
         type: String,
-        require: true
+        required: true
     },
     avail: {
         type: Boolean,
-        require: true
+        required: true
     }
 })
 
