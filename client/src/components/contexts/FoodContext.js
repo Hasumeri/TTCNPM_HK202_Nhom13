@@ -16,6 +16,7 @@ const FoodContextProvider = ({children}) => {
                 setFoodState({
                     food: response.data.food
                 })
+                console.log(foodState.food);
             }
         }
         catch (error) {
@@ -25,7 +26,7 @@ const FoodContextProvider = ({children}) => {
     
 
     const FoodContextData = {getFood, foodState}
-
+    console.log(children);
     return (
         <FoodContext.Provider value = {FoodContextData}>
             {children}
