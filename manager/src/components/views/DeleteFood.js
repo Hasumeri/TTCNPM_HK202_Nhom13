@@ -131,7 +131,7 @@ const DeleteFood = () => {
                     Xóa   
                 </Button>
 
-                {/* Modal */}
+                {/*  ----- Modal ----- */}
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Body>Bạn có chắc chắn muốn xóa?</Modal.Body>
                     <Modal.Footer>
