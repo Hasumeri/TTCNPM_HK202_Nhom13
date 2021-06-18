@@ -20,6 +20,7 @@ const UserContextProvider = ({children}) => {
             const response = await axios.get(`${apiUrl}/authen/user`)
             if (response.data.success) {
                 setUserState({
+                    ...userState,
                     isAuthen: true,
                     user: response.data.user
                 })
@@ -29,6 +30,7 @@ const UserContextProvider = ({children}) => {
             localStorage.removeItem(TOKEN)
             setToken(null)
             setUserState({
+                ...userState,
                 isAuthen: false,
                 user: null
             })
@@ -67,6 +69,7 @@ const UserContextProvider = ({children}) => {
         localStorage.removeItem(TOKEN)
         setToken(null)
         setUserState({
+            ...userState,
             isAuthen: false,
             user: null
         })
