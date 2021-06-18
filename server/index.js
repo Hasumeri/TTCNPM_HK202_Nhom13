@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
-const food = require('./api/food')
+const addFoodHandler = require('./api/addFoodHandler')
+
+
 require('dotenv').config()
 
 connectDatabase()
@@ -21,10 +23,9 @@ server.use(express.json());
 // server.use("/", foodHandler);
 // server.use("/", searchHandler);
 
-server.use('/', food)
 server.use('/api/authen', authen)
 server.use('/api/foodHandler', foodHandler)
-
+server.use('/api/addFood', addFoodHandler)
 
 const PORT = 5000
 
