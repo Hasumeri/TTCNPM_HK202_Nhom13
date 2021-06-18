@@ -2,7 +2,9 @@ import React from 'react'
 import { Navbar, Nav, Container, Button } from 'react-bootstrap'
 import { useContext } from 'react'
 import { ManagerContext } from '../contexts/ManagerContext'
-import {BrowserRouter as Router, Route, Switch,Link,NavLink} from 'react-router-dom'
+
+import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
+
 const Header = () => {
     const {cookSignout} = useContext(ManagerContext)
     const signout = () => cookSignout()

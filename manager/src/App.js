@@ -5,7 +5,6 @@ import Signin from './components/views/Signin'
 import AddFood from './components/views/AddFood'
 import ModifyFood from './components/views/ModifyFood'
 import DeleteFood from './components/views/DeleteFood'
-import DeleteFood2 from './components/views/DeleteFood2'
 import ManagerContextProvider from './components/contexts/ManagerContext'
 import FoodContextProvider from './components/contexts/FoodContext';
 
@@ -22,7 +21,6 @@ function App() {
               <Route exact path='/addfood' component={AddFood} />
               <Route exact path='/modifyfood' component={ModifyFood} />
               <Route exact path='/deletefood' component={DeleteFood} />
-              <Route exact path='/deletefood/2' component={DeleteFood2} />
 
               {/* <Route exact path='/deletefood'>
                 <DeleteFood/>
