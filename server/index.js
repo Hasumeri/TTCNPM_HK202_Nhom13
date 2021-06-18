@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
-const addFoodHandler = require('./api/addFoodHandler')
+const addFoodHandler = require('./api/addNewFoodHandler')
 
 
 require('dotenv').config()
