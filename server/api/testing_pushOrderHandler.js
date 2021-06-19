@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {OrderSchema, _, Status} = require("../schemas/Order")
+const {OrderSchema, _, Status} = require("../schemas/_Order")
 const FoodSchema = require("../schemas/Food")
 const UserSchema = require("../schemas/User")
 

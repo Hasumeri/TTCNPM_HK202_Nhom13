@@ -3,7 +3,7 @@ const cors = require('cors')
 const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
 const addFoodHandler = require('./api/addNewFoodHandler')
-
+const payment = require('./api/testing_pushOrderHandler')
 
 require('dotenv').config()
 
@@ -26,6 +26,7 @@ server.use(express.json());
 server.use('/api/authen', authen)
 server.use('/api/foodHandler', foodHandler)
 server.use('/api/addFood', addFoodHandler)
+server.use("/orders", payment);
 
 const PORT = 5000
 
