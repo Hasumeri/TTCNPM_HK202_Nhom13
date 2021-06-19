@@ -4,7 +4,7 @@ const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
 const food = require('./api/food')
 const foodHandler = require("./api/foodHandler");
-const orderHandler = require(".api.orderHandler")
+const orderHandler = require("./api/orderHandler")
 const searchHandler = require("./api/searchHandler");
 require('dotenv').config()
 
@@ -20,7 +20,7 @@ server.use(express.urlencoded({ extended: false }));
 server.use('/', food)
 server.use('/api/authen', authen)
 server.use('/api/foodHandler', foodHandler)
-server.unsubscribe('/api/orderHandler', orderHandler)
+server.use('/api/orderHandler', orderHandler)
 
 
 const PORT = 5000

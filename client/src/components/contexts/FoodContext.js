@@ -66,7 +66,7 @@ const FoodContextProvider = ({children}) => {
         const check = cartState.cart.find(item => item.name === food.name)
         if (!check) {   
             const one = {
-                name: food.name,
+                foodName: food.name,
                 quantity: 1,
                 price: food.price,
                 amount: food.price
