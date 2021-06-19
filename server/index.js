@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const connectDatabase = require('./config/database')
 const authen = require('./api/authen')
-const food = require('./api/food')
 const foodHandler = require("./api/foodHandler");
 const orderHandler = require("./api/orderHandler")
 const searchHandler = require("./api/searchHandler");

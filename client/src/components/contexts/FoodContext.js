@@ -9,6 +9,7 @@ const FoodContextProvider = ({children}) => {
         food: null,
         foodList: [],
     })
+
     const [cartState, setCartState] = useState({
         cart: [],
         total: 0
@@ -63,7 +64,7 @@ const FoodContextProvider = ({children}) => {
 
     const addToCart = (foodId) => {    
         const food = foodState.foodList.find(food => food._id === foodId)   
-        const check = cartState.cart.find(item => item.name === food.name)
+        const check = cartState.cart.find(item => item.foodName === food.name)
         if (!check) {   
             const one = {
                 foodName: food.name,
@@ -81,7 +82,7 @@ const FoodContextProvider = ({children}) => {
 
     const decreaseQuantity = (foodName) => {
         cartState.cart.forEach(item => {
-            if (item.name === foodName) {
+            if (item.foodName === foodName) {
                 if (item.quantity > 1) {
                     item.quantity -= 1
                 }
@@ -97,7 +98,7 @@ const FoodContextProvider = ({children}) => {
 
     const increaseQuantity = (foodName) => {
         cartState.cart.forEach(item => {
-            if (item.name === foodName) {
+            if (item.foodName === foodName) {
                 item.quantity += 1
                 item.amount = item.price*item.quantity
             }
@@ -111,7 +112,7 @@ const FoodContextProvider = ({children}) => {
 
     const removeFood = (foodName) => {
         cartState.cart.forEach((item, index) => {
-            if (item.name === foodName) {
+            if (item.foodName === foodName) {
                 cartState.cart.splice(index, 1)
             }
         })
@@ -122,7 +123,24 @@ const FoodContextProvider = ({children}) => {
         updateTotal()
     }
 
-    const FoodContextData = {getFood, findFood, setShowFoodModal, addToCart, decreaseQuantity, increaseQuantity, removeFood, updateTotal, foodState, cartState, showFoodModal}
+    const sendOrderRequest = async (orderInfo) => {
+        try {
+            const response = await axios.post(`${apiUrl}/orderHandler/makeOrder`, orderInfo)
+            if (response.data.success) {
+                setCartState({
+                    cart: [],
+                    total: 0
+                })
+            }
+            return response.data
+        }
+        catch (error) {
+            if (error.response.data) return error.response.data
+            return {success: false, message: error.message}
+        }
+    }
+
+    const FoodContextData = {getFood, findFood, setShowFoodModal, addToCart, decreaseQuantity, increaseQuantity, removeFood, updateTotal, sendOrderRequest, foodState, cartState, showFoodModal}
 
     return (
         <FoodContext.Provider value = {FoodContextData}>
