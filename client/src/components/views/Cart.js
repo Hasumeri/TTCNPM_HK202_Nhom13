@@ -4,7 +4,7 @@ import { FoodContext } from '../contexts/FoodContext'
 import Header from './Header'
 
 const Cart = () => {
-    const {cartState: {cart}, decreaseQuantity, increaseQuantity, removeFood} = useContext(FoodContext)
+    const {cartState: {cart, total}, decreaseQuantity, increaseQuantity, removeFood} = useContext(FoodContext)
 
     return ( 
         <div className='col-md-10 col-lg-8 mx-auto d-block'>
@@ -23,6 +23,7 @@ const Cart = () => {
                         </div>
                     </div>
                 ))}
+                <div>{total}</div>
             </div>
         </div>
     )
