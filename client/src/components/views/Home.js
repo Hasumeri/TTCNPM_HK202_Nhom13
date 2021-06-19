@@ -12,7 +12,7 @@ const Home = () => {
         <div className='col-md-10 col-lg-8 mx-auto d-block'>
             <Header />
             <div className='row justify-content-center'>
-                { foodList.map((one) => (
+                { foodList.map(one => (
                     <SingleFood food={one} />
                 ))}
             </div>
