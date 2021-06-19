@@ -23,8 +23,11 @@ const FoodContextProvider = ({children}) => {
         }
     }
     
+    const change = (newFood) => {
+        setFoodState(newFood);
+    }
 
-    const FoodContextData = {getFood, foodState}
+    const FoodContextData = {getFood, foodState, change}
 
     return (
         <FoodContext.Provider value = {FoodContextData}>

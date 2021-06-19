@@ -21,8 +21,8 @@ const AddFood = () => {
 
     const styleContainer = {
         width: '55%', 
-        border: '5px solid #458bdb', 
-        backgroundColor: '#b2c4d8',
+        border: '3px solid #458bdb', 
+        // backgroundColor: '#b2c4d8',
         padding: '15px'
     }
 

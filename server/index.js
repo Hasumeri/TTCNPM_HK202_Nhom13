@@ -8,6 +8,7 @@ const orderHandler = require("./api/orderHandler")
 const searchHandler = require("./api/searchHandler");
 const addFoodHandler = require('./api/addNewFoodHandler')
 const payment = require('./api/testing_pushOrderHandler')
+
 require('dotenv').config()
 
 connectDatabase()
@@ -19,7 +20,6 @@ server.use("/images", express.static("images"));
 
 server.use(express.urlencoded({ extended: false }));
 
-server.use('/', food)
 server.use('/api/authen', authen)
 server.use('/api/foodHandler', foodHandler)
 server.use('/api/orderHandler', orderHandler)

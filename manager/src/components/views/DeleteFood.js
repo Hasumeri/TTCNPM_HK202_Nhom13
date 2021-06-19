@@ -1,172 +1,151 @@
-import React, {useState} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState, useContext, useEffect} from 'react';
+import { FoodContext } from '../contexts/FoodContext';
 
-import {
-    Container, Form, Col, Row, Button, Image,Modal
-} from 'react-bootstrap'
-import {NavLink} from 'react-router-dom'
-import Pagination from 'react-bootstrap-4-pagination';
+import { 
+    Card, Form, Button, Modal, Container, Row, Col, Alert 
+} from 'react-bootstrap';
 
 const DeleteFood = () => {
-    const [pageCurrent, setpageCurrent] = useState(1);
+    
+    // dung de check da chon mon hay chua
+    const [countChecked, setcountChecked] = useState(0);
 
-    let paginationConfig = {
-        totalPages: 6,
-        currentPage: pageCurrent,
-        showMax: 0,
-        size: "sm",
-        threeDots: false,
-        prevNext: true,
+    // lay du lieu tu component FoodContext
+    const {foodState: {food}, getFood, change} = useContext(FoodContext); 
 
-        onClick: function (page) {
-            setpageCurrent(page);
-          }
-    }; 
+    // check da chon mon hay chua
+    const [listCheck, setListCheck] = useState([]);
 
-    const styleContainer = {
-        width: '55%', 
-        border: '5px solid #458bdb', 
-        backgroundColor: '#b2c4d8',
-        padding: '15px'
-    }
+    // goi ham getFood()
+    useEffect (       
+        () => {           
+            getFood();           
+        }, []
+    )
 
-    const [imageSample, setimageSample] = useState('https://i.pinimg.com/originals/ab/69/99/ab699997fef34747f7d0953fd2f1b6c5.jpg');
-
+    // show Modal
     const [show, setShow] = useState(false);
 
+    // khi Click [huy] trong Modal
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [checkNull,setcheckNull]=useState(false);
-    function checkClick(event){
-        setcheckNull(!checkNull);
-        console.log(checkNull);
+
+    // check da chon mon hay chua
+    const handleShow = () => {
+        if(countChecked < 1){
+            alert('Vui lòng chọn món ăn!')
+            return // <Alert>Vui lòng chọn món ăn!</Alert>
+        }
+        setShow(true);
     }
+
+    // ham khi Click [xoa] trong Modal
+    const handleDeleteCheckBox = () => {
+        var result = food
+
+        for(let i = 0; i < food.length; i++) {
+            var temp = [];
+            for(let j = 0; j < listCheck.length; j++) {               
+                if(food[i].foodID == Object.keys(listCheck[j])) 
+                    temp.push(listCheck[j])
+            }
+
+            if(temp.length > 0) {
+                if(Boolean(Object.values(temp[temp.length - 1])) == true) {
+                    result = result.filter(item => {
+                        return item.foodID != String(Object.keys(temp[temp.length - 1]))
+                    })  
+                }
+            }
+        }
+        
+        change({food:result})
+        setcountChecked(0)
+        handleClose()
+        setListCheck([])
+    }
+
+    // ham de set gia tri countChecked => xem da check mon an chua
+    function handleCheckboxChange(e) {
+
+        var name = e.target.name
+        let value = e.target.checked
+        var ObjCheck = {[name]:value}
+
+        // ... sao chep sang bien moi, doi bien moi thi cu k doi
+        let tempListCheck = [...listCheck]
+        tempListCheck.push(ObjCheck)
+        setListCheck(tempListCheck)
+        
+        if(e.target.checked === true)
+            setcountChecked(countChecked + 1);
+        else 
+            setcountChecked(countChecked - 1);
+    }
+    
+    //console.log(listCheck)
+
+    // CSS 
+    const styleContainer = {
+        marginTop: '35px',
+        marginBottom: '35px',
+        // border: '1px solid #ccc',
+        border: '3px solid #458bdb',
+        padding: '20px',
+    }
+
+    const stylebtnDelete = {
+        paddingLeft: '30px',
+        paddingRight: '30px',
+        marginLeft: '46%',
+        marginTop: '20px'
+    }
+
+    const stylebtnModal = {
+        paddingLeft: '20px',
+        paddingRight: '20px'
+    }
+    
     return (
-        <div style={{marginTop: '50px', marginBottom: '30px'}}>
-            <Container style={styleContainer}>               
-                <Form>
-                    <Form.Group as={Row}>
-                        <Col className="border-bottom">
-                            <center><Form.Label><h1>Xóa món ăn</h1></Form.Label></center>                       
-                        </Col>
-                    </Form.Group>
-                    <div className="content">
-                        <Row>
-                            <Col>
-                                <Form.Group as={Row} controlId='food1'>
-                                    <Form.Check aria-label="option 1" name="check" onClick={checkClick}/>
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group as={Row}>
-                                    <Form.Check aria-label="option 1" />
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group as={Row}>
-                                    <Form.Check aria-label="option 1" />
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Group as={Row}>
-                                    <Form.Check aria-label="option 1" />
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group as={Row}>
-                                    <Form.Check aria-label="option 1" />
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group as={Row}>
-                                    <Form.Check aria-label="option 1" />
-                                    <Form.Group>
-                                        <Image className='imageSample' src={imageSample} rounded />
-                                        <Form.Label>Thịt Nai Thơm Ngon</Form.Label>
-                                        <Form.Label>Giá: 500.000 VND</Form.Label>
-                                    </Form.Group>
-                                </Form.Group>
-                            </Col>
-                        </Row>
+        <div className='col-md-10 col-lg-8 mx-auto d-block'> 
+            <Container style={styleContainer}>
+                <Form.Group as={Row}>
+                    <Col className="border-bottom">
+                        <center><Form.Label><h1>Xóa món ăn</h1></Form.Label></center>                       
+                    </Col>
+                </Form.Group>
+                <div className='row justify-content-center'>               
+                    { food.map((one) => (
+                        <Card className='col-md-5 col-lg-3 m-3' key={one._id}>
+                            <Form.Group className="mb-3" controlId={one.foodID}  >
+                                <Form.Check type="checkbox" name={one.foodID} onChange={handleCheckboxChange}/>
+                            </Form.Group>
+                            <Card.Img src={one.imageURL} alt='img' />
+                            <Card.Body>
+                                <Card.Title className='text-center font-weight-bold text-primary' >{one.name}</Card.Title>
+                                <Card.Text className='text-center font-weight-bold'>{one.price} đ</Card.Text>
+                            </Card.Body>                       
+                        </Card> 
+                    ))}  
+                </div>
+                <Button variant="primary" style={stylebtnDelete} onClick={handleShow}>
+                    Xóa   
+                </Button>
 
-                        {/* <Pagination style={{justifyContent: 'center'}}>
-                            <Pagination.Prev />
-                            <Pagination.Item disable >{1}</Pagination.Item>
-                            <Pagination.Item  >{2}</Pagination.Item>
-                            <Pagination.Item >{3}</Pagination.Item>
-                            <Pagination.Next />
-                        </Pagination>                        */}
-                        {/* <Pagination {...paginationConfig} /> */}
-
-                        <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            </li>
-                            <li class="page-item li-page-item"><NavLink to='deletefood'>1</NavLink></li>
-                            <li class="page-item li-page-item"><NavLink to='deletefood/2'>2</NavLink></li>
-                            {/* <li class="page-item"><a class="page-link" href="#">3</a></li> */}
-                            <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                            </li>
-                        </ul>
-                        </nav>
-                    </div>
-                    
-                    <div className="text-right">
-                        <Button variant="primary"  onClick={handleShow} >
-                            Delete
+                {/*  ----- Modal ----- */}
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Body>Bạn có chắc chắn muốn xóa?</Modal.Body>
+                    <Modal.Footer>
+                        <Button style={stylebtnModal} variant="secondary" onClick={handleClose}>
+                            Hủy
                         </Button>
-                    </div>
-
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Body>Bạn có chắc chắn muốn xóa?</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Hủy 
-                            </Button>
-                            <Button variant="primary" onClick={handleClose}>
-                                Xóa 
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </Form>
+                        <Button style={stylebtnModal} variant="primary" onClick={handleDeleteCheckBox}>
+                            Xóa
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         </div>
-    );
-};
+    )
+}
 
 export default DeleteFood;
