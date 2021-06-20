@@ -2,25 +2,28 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
-    listFood: [{
-        foodName: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        quantity: {
-            type: Number,
-            required:true
-        },
-        price: {
-            type: Number,
-            required: true
-        },
-        amount: {
-            type: Number,
-            required: true
-        }
-    }],
+    // listFood: [{
+    //     foodName: {
+    //         type: String,
+    //         required: true,
+    //     },
+    //     quantity: {
+    //         type: Number,
+    //         required:true
+    //     },
+    //     price: {
+    //         type: Number,
+    //         required: true
+    //     },
+    //     amount: {
+    //         type: Number,
+    //         required: true
+    //     }
+    // }],
+    listFood: {
+        type: Schema.Types.Array,
+        required: true
+    },
 
     total: {
         type: Number,

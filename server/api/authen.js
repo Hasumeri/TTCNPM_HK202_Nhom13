@@ -68,7 +68,7 @@ router.post('/cook/signup', async(req, res) => {
         const hashedPassword = await argon2.hash(password)
         const newCook = new Cook({email: email, password: hashedPassword})
         await newCook.save()
-        res.json({success: true, message: 'Account has been created succesfully'})
+        res.json({success: true, message: 'Account has been created successfully'})
     }
     catch(error) {
         console.log(error)
@@ -86,7 +86,7 @@ router.post('/cook/signin', async(req, res) => {
         if (!validPassword)
             return res.json({success:false, message: 'Email or password is not correct'})
         const encodedToken = jsonwebtoken.sign({cookId: cook._id}, process.env.ACCESS_TOKEN)
-        res.json({success: true, message: 'Sign in succesfully', encodedToken})
+        res.json({success: true, message: 'Sign in successfully', encodedToken})
     }
     catch(error) {
         console.log(error)
@@ -116,7 +116,7 @@ router.post('/manager/signup', async(req, res) => {
         const hashedPassword = await argon2.hash(password)
         const newManager = new Manager({email: email, password: hashedPassword})
         await newManager.save()
-        res.json({success: true, message: 'Account has been created succesfully'})
+        res.json({success: true, message: 'Account has been created successfully'})
     }
     catch(error) {
         console.log(error)
@@ -134,7 +134,7 @@ router.post('/manager/signin', async(req, res) => {
         if (!validPassword)
             return res.json({success:false, message: 'Email or password is not correct'})
         const encodedToken = jsonwebtoken.sign({managerId: manager._id}, process.env.ACCESS_TOKEN)
-        res.json({success: true, message: 'Sign in succesfully', encodedToken})
+        res.json({success: true, message: 'Sign in successfully', encodedToken})
     }
     catch(error) {
         console.log(error)
