@@ -44,7 +44,7 @@ const Cart = () => {
                         <div className='col-6 text-left'>{one.foodName}</div>
                         <div className='col-6 align-self-start d-flex justify-content-end'>
                             <Button variant='outline-dark' size='sm' onClick={decreaseQuantity.bind(this, one.foodName)}>-</Button>
-                            {one.quantity}
+                            <div className='mx-1'>{one.quantity}</div>
                             <Button variant='outline-dark' size='sm' onClick={increaseQuantity.bind(this, one.foodName)}>+</Button>
                         </div>
                         <div className='col-12 d-flex justify-content-end'>

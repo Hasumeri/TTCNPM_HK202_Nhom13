@@ -16,7 +16,8 @@ const SingleFood = ({food}) => {
                 <Card.Title className='text-center font-weight-bold text-primary' type='button' onClick={chooseFood.bind(this, food._id)}>{food.name}</Card.Title>
                 <Card.Text className='text-center font-weight-bold'>{food.price} đ</Card.Text>
             </Card.Body>
-            <Button variant='danger' onClick={addToCart.bind(this, food._id)}>ADD TO CART</Button>
+            { food.avail && <Button variant='danger' onClick={addToCart.bind(this, food._id)}>ADD TO CART</Button>}
+            { !food.avail && <Button variant='danger' disabled>ADD TO CART</Button>}
         </Card>
     )
 }

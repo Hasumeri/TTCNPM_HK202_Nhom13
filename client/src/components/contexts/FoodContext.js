@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { apiUrl } from '../utils/constants'
+import { apiUrl, CART } from '../utils/constants'
 import axios from 'axios'
 
 export const FoodContext = createContext()
@@ -18,13 +18,13 @@ const FoodContextProvider = ({children}) => {
     const [showFoodModal, setShowFoodModal] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem('cart')) {
-            setCartState(JSON.parse(localStorage.getItem('cart')))
+        if (localStorage.getItem(CART)) {
+            setCartState(JSON.parse(localStorage.getItem(CART)))
         }
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartState))
+        localStorage.setItem(CART, JSON.stringify(cartState))
     }, [cartState])
 
     // useEffect(() => updateTotal(), [cartState])
