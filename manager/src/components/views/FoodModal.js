@@ -6,7 +6,7 @@ const FoodModal = () => {
     const {foodState: {food}, showFoodModal, setShowFoodModal} = useContext(FoodContext)
     
     const closeDialog = () => {
-        setShowFoodModal(false)
+        setShowFoodModal(false);
     }
 
     return (
@@ -24,4 +24,4 @@ const FoodModal = () => {
     )
 }
 
-export default FoodModal
+export default FoodModal;

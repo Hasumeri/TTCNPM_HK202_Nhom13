@@ -126,21 +126,44 @@ const FoodContextProvider = ({children}) => {
         })
     }
 
-    const removeFood = (foodName) => {
-        
-    }
-
     const deleteFood = (foodName) => {
        // var result = food;
        //const food = foodState.foodList.find(food => food._id === foodId)
        var result = findFood()
     }
 
+    // Ham sua doi mon an
+    const modifyFood = (newFood) => {
+        const newFoodState = {...foodState};
+        for(let i = 0; i < newFoodState.foodList.length; i++){
+            if(newFoodState.foodList[i]._id == newFood._id) {
+                newFoodState.foodList[i] = newFood
+                setFoodState(newFoodState);
+                return
+            }
+        }  
+    }
+
+    // ham xoa mon an
+    const removeFood = (newFood) => {
+        const newFoodState = {...foodState};
+        for(let i = 0; i < newFoodState.foodList.length; i++){
+            if(newFoodState.foodList[i]._id == newFood._id) {
+                const temp=newFoodState.foodList.filter(item => item._id != newFood._id)
+                // newFoodState.foodList[i] = newFood
+                // setFoodState(newFoodState);
+                // return
+                //console.log(temp)
+                newFoodState.foodList = temp;
+                setFoodState(newFoodState);
+            }
+        }  
+    }
     // xuat ham ra
     const FoodContextData = {
         getFood, findFood, setShowFoodModal, setModifyFoodModal, 
         setDeleteFoodModal, addToCart, decreaseQuantity, increaseQuantity, 
-        removeFood, deleteFood,
+        deleteFood, modifyFood,removeFood,
         foodState, cartState, showFoodModal, modifyFoodModal,
         deleteFoodModal
     }

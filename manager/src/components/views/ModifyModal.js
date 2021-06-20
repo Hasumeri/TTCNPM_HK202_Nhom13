@@ -4,7 +4,7 @@ import { Modal, Button ,Form } from 'react-bootstrap'
 import NumberFormat from 'react-number-format';
 
 const ModifyFoodModal = () => {
-    const {foodState: {food}, modifyFoodModal, setModifyFoodModal, change
+    const {foodState: {food}, modifyFoodModal, setModifyFoodModal, modifyFood
     } = useContext(FoodContext)
 
     const closeDialog = () => {
@@ -15,7 +15,7 @@ const ModifyFoodModal = () => {
     const tempFood = {...newFood};
     //console.log(newFood)
     
-    function _change(e) {
+    const _modifyFood = (e) => {
              
         let name = e.target.name;
         let value = e.target.value;
@@ -25,8 +25,9 @@ const ModifyFoodModal = () => {
         tempFood[temp] = String(Object.values(tempFood1))
         setNewFood(tempFood)
     }
-    function handleSave() {
-        change(newFood)
+    
+    const handleSave = () => {
+        modifyFood(newFood)
         closeDialog()
     }
     
@@ -38,11 +39,11 @@ const ModifyFoodModal = () => {
             </Modal.Header>
             <Modal.Body>
                 <Form.Label>Tên món ăn</Form.Label>
-                <Form.Control size="lg" type="text" defaultValue={food.name} onChange={_change} name="name"/> 
+                <Form.Control size="lg" type="text" defaultValue={food.name} onChange={_modifyFood} name="name"/> 
                 <Form>                  
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Mô tả</Form.Label>
-                        <Form.Control as="textarea" rows={3} defaultValue={food.description} onChange={_change} name="description"/>
+                        <Form.Control as="textarea" rows={3} defaultValue={food.description} onChange={_modifyFood} name="description"/>
                     </Form.Group>
                 </Form>
                 <Form.Label>Giá tiền: </Form.Label>

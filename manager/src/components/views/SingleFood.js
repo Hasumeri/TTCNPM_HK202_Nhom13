@@ -15,11 +15,13 @@ const SingleFood = ({food}) => {
         setShowFoodModal(true)
     }
 
+    // modify Modal
     const modifyFood = foodId => {
         findFood(foodId)
         setModifyFoodModal(true)
     }
 
+    // delete Modal
     const deleteFood = foodId => {
         findFood(foodId)
         setDeleteFoodModal(true)   
