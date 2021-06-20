@@ -1,17 +1,35 @@
 import React, { useContext, useState } from 'react'
 import { FoodContext } from '../contexts/FoodContext'
 import { Modal, Button } from 'react-bootstrap'
+import { useEffect } from 'react'
 
 const DeleteModal = () => {
-    const {foodState: {food}, deleteFoodModal, setDeleteFoodModal} = useContext(FoodContext)
+    const {
+        foodState: {foodList,food}, deleteFoodModal, setDeleteFoodModal, getFood, removeFood
+    } = useContext(FoodContext)
 
     const closeDialog = () => {
         setDeleteFoodModal(false)
     }
 
+    // ham de lay food
+    useEffect (       
+        () => {           
+            getFood();           
+        }, []
+    )
+        
+    const deleteHandle = () => {
+        removeFood(food)
+        closeDialog()
+    }
+
+
+    // ------------- CSS -------------
+
     const styleBtn = {
-        paddingLeft: '20px', 
-        paddingRight: '20px'
+        paddingLeft: '12px', 
+        paddingRight: '12px'
     }
 
     return (
@@ -21,7 +39,7 @@ const DeleteModal = () => {
             </Modal.Header>
              <Modal.Footer>
                 <Button style={styleBtn} variant='primary' onClick={closeDialog}>Cancel</Button>
-                <Button style={styleBtn} variant='danger' onClick={closeDialog}>Delete</Button>
+                <Button style={styleBtn} variant='danger' onClick={deleteHandle}>Delete</Button>
             </Modal.Footer>
         </Modal>
     )
