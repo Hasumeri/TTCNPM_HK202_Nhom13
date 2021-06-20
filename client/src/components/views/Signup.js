@@ -27,7 +27,7 @@ const Signup = () => {
         ...signupForm,
         [event.target.name]: event.target.value
     })
-    
+
     const signup = async (event) => {
         event.preventDefault()
 
