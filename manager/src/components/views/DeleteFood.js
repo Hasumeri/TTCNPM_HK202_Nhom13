@@ -38,7 +38,7 @@ const DeleteFood = () => {
         setShow(true);
     }
 
-    // ham khi Click [xoa] trong Modal
+    // ham xu ly khi Click [xoa] trong Modal
     const handleDeleteCheckBox = () => {
         var result = food
 
@@ -84,7 +84,7 @@ const DeleteFood = () => {
     
     //console.log(listCheck)
 
-    // CSS 
+    // --------- CSS --------- //
     const styleContainer = {
         marginTop: '35px',
         marginBottom: '35px',
