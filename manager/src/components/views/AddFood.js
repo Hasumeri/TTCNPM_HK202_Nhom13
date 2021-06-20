@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header'
+import FoodContext from '../contexts/FoodContext'
 
 import {
     Container, Form, Col, Row, Button, Image

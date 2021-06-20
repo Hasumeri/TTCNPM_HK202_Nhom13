@@ -17,6 +17,7 @@ const SingleFood = ({food}) => {
 
     // modify Modal
     const modifyFood = foodId => {
+        console.log(foodId)
         findFood(foodId)
         setModifyFoodModal(true)
     }

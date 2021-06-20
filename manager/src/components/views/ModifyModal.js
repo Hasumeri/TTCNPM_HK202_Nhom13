@@ -12,7 +12,9 @@ const ModifyFoodModal = () => {
     }
     
     const [newFood, setNewFood] = useState(food)
-    const tempFood = {...newFood};
+    console.log(newFood)
+    console.log(food)
+    const tempFood = food;
     //console.log(newFood)
     
     const _modifyFood = (e) => {
@@ -23,14 +25,15 @@ const ModifyFoodModal = () => {
         const tempFood1 = {[name]:value}
         const temp = String(Object.keys(tempFood1))
         tempFood[temp] = String(Object.values(tempFood1))
+        //console.log(tempFood)
         setNewFood(tempFood)
     }
     
     const handleSave = () => {
-        modifyFood(newFood)
+        modifyFood(tempFood)
         closeDialog()
     }
-    
+    //console.log(newFood)
 
     return (
         <Modal show={modifyFoodModal} animation={false} onHide={closeDialog}>
@@ -49,8 +52,9 @@ const ModifyFoodModal = () => {
                 <Form.Label>Giá tiền: </Form.Label>
                 <NumberFormat thousandSeparator={true} name="price" onValueChange={(values=>{
                     const {formattedValue, value} = values;
-                    tempFood['price']=formattedValue
+                    tempFood['price'] = formattedValue
                     setNewFood(tempFood)
+                    //console.log(tempFood)
                 })}/><span>VND</span>
             </Modal.Body>
             

@@ -84,10 +84,11 @@ const FoodContextProvider = ({children}) => {
     }
     
     const findFood = foodId => {
-        const food = foodState.foodList.find(food => food._id === foodId)
+        const newfood = foodState.foodList.find(food => food._id === foodId)
+        console.log(newfood)
         setFoodState({
             ...foodState,
-            food: food
+            food: newfood
         })
     }
 
@@ -126,10 +127,10 @@ const FoodContextProvider = ({children}) => {
         })
     }
 
-    const deleteFood = (foodName) => {
-       // var result = food;
-       //const food = foodState.foodList.find(food => food._id === foodId)
-       var result = findFood()
+
+    // Ham them mon an
+    const addFood = (newFood) => {
+
     }
 
     // Ham sua doi mon an
@@ -139,7 +140,7 @@ const FoodContextProvider = ({children}) => {
             if(newFoodState.foodList[i]._id == newFood._id) {
                 newFoodState.foodList[i] = newFood
                 setFoodState(newFoodState);
-                return
+                return;
             }
         }  
     }
@@ -159,11 +160,12 @@ const FoodContextProvider = ({children}) => {
             }
         }  
     }
+
     // xuat ham ra
     const FoodContextData = {
         getFood, findFood, setShowFoodModal, setModifyFoodModal, 
         setDeleteFoodModal, addToCart, decreaseQuantity, increaseQuantity, 
-        deleteFood, modifyFood,removeFood,
+        addFood, modifyFood, removeFood, 
         foodState, cartState, showFoodModal, modifyFoodModal,
         deleteFoodModal
     }
