@@ -3,13 +3,10 @@ import { Card, Button } from 'react-bootstrap'
 import { FoodContext } from '../contexts/FoodContext'
 
 const SingleFood = ({food}) => {
-    const {findFood, getFood, setShowFoodModal, sendChangeFoodAvailRequest } = useContext(FoodContext)
-    const chooseFood = foodId => {
-        findFood(foodId)
-        setShowFoodModal(true)
-    }
-    const changeFoodAvail = (foodId) => {
-        sendChangeFoodAvailRequest({foodId})
+    const { sendChangeFoodAvailRequest } = useContext(FoodContext)
+
+    const changeFoodAvail = async (foodId) => {
+        await sendChangeFoodAvailRequest({foodId})
         window.location.reload()
     }
     

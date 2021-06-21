@@ -6,11 +6,8 @@ export const FoodContext = createContext()
 
 const FoodContextProvider = ({children}) => {
     const [foodState, setFoodState] = useState({
-        food: null,
         foodList: [],
     })
-
-    const [showFoodModal, setShowFoodModal] = useState(false)
 
     const getFood = async () => {
         try {
@@ -26,14 +23,6 @@ const FoodContextProvider = ({children}) => {
             console.log(error)
         }
     }
-    
-    const findFood = foodId => {
-        const food = foodState.foodList.find(food => food._id === foodId)
-        setFoodState({
-            ...foodState,
-            food: food
-        })
-    }
 
     const sendChangeFoodAvailRequest = async (foodId) => {
         try {
@@ -44,7 +33,7 @@ const FoodContextProvider = ({children}) => {
         }
     }
 
-    const FoodContextData = {getFood, findFood, setShowFoodModal, sendChangeFoodAvailRequest, foodState, showFoodModal}
+    const FoodContextData = {getFood, sendChangeFoodAvailRequest, foodState}
 
     return (
         <FoodContext.Provider value = {FoodContextData}>

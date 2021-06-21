@@ -3,13 +3,10 @@ import { Card, Button } from 'react-bootstrap'
 import { OrderContext } from '../contexts/OrderContext'
 
 const SingleOrder = ({order}) => {
-    const {orderState: {pending}, findOrder, setShowOrderModal, sendChangeOrderStatusRequest } = useContext(OrderContext)
-    const chooseOrder = (orderId) => {
-        findOrder(orderId)
-        setShowOrderModal(true)
-    }
-    const changeOrderStatus = (orderId) => {
-        sendChangeOrderStatusRequest({orderId})
+    const { sendChangeOrderStatusRequest } = useContext(OrderContext)
+
+    const changeOrderStatus = async (orderId) => {
+        await sendChangeOrderStatusRequest({orderId})
         window.location.reload()
     }
     

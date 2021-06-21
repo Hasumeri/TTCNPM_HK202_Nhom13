@@ -6,13 +6,10 @@ export const OrderContext = createContext()
 
 const OrderContextProvider = ({children}) => {
     const [orderState, setOrderState] = useState({
-        order: null,
         pending: [],
         processing: [],
         completed: []
     })
-
-    const [showOrderModal, setShowOrderModal] = useState(false)
 
     const getPendingOrder = async () => {
         try {
@@ -58,14 +55,6 @@ const OrderContextProvider = ({children}) => {
             console.log(error)
         }
     }
-    
-    const findOrder = orderId => {
-        const order = orderState.orderList.find(order => order._id === orderId)
-        setOrderState({
-            ...orderState,
-            order: order
-        })
-    }
 
     const sendChangeOrderStatusRequest = async (orderId) => {
         try {
@@ -76,7 +65,7 @@ const OrderContextProvider = ({children}) => {
         }
     }
 
-    const OrderContextData = {getPendingOrder, getProcessingOrder, getCompletedOrder, findOrder, setShowOrderModal, sendChangeOrderStatusRequest, orderState, showOrderModal}
+    const OrderContextData = {getPendingOrder, getProcessingOrder, getCompletedOrder, sendChangeOrderStatusRequest, orderState}
 
     return (
         <OrderContext.Provider value = {OrderContextData}>
