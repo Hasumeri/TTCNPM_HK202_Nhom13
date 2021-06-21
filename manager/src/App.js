@@ -9,6 +9,7 @@ import ManagerContextProvider from './components/contexts/ManagerContext'
 import FoodContextProvider from './components/contexts/FoodContext';
 
 function App() {
+
   return (
     
     <Router>    

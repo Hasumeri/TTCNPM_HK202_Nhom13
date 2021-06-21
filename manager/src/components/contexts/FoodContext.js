@@ -57,6 +57,7 @@ const FoodContextProvider = ({children}) => {
     const [showFoodModal, setShowFoodModal] = useState(false)
     const [modifyFoodModal, setModifyFoodModal] = useState(false)
     const [deleteFoodModal, setDeleteFoodModal] = useState(false)
+    const [addFoodModal, setAddFoodModal] = useState(false)
 
     useEffect(() => {
         if (localStorage.getItem('cart')) {
@@ -129,8 +130,8 @@ const FoodContextProvider = ({children}) => {
 
 
     // Ham them mon an
-    const addFood = (newFood) => {
-
+    const addFood = (newListFood) => {
+        setFoodState({...foodState, foodList:newListFood})
     }
 
     // Ham sua doi mon an
@@ -145,7 +146,7 @@ const FoodContextProvider = ({children}) => {
         }  
     }
 
-    // ham xoa mon an
+    // Ham xoa mon an
     const removeFood = (newFood) => {
         const newFoodState = {...foodState};
         for(let i = 0; i < newFoodState.foodList.length; i++){
@@ -165,9 +166,9 @@ const FoodContextProvider = ({children}) => {
     const FoodContextData = {
         getFood, findFood, setShowFoodModal, setModifyFoodModal, 
         setDeleteFoodModal, addToCart, decreaseQuantity, increaseQuantity, 
-        addFood, modifyFood, removeFood, 
+        addFood, modifyFood, removeFood, setAddFoodModal,
         foodState, cartState, showFoodModal, modifyFoodModal,
-        deleteFoodModal
+        deleteFoodModal, addFoodModal
     }
 
     return (

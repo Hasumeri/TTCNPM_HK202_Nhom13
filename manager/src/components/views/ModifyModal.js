@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { FoodContext } from '../contexts/FoodContext'
-import { Modal, Button ,Form } from 'react-bootstrap'
+import { Modal, Button, Form } from 'react-bootstrap'
 import NumberFormat from 'react-number-format';
 
 const ModifyFoodModal = () => {
@@ -12,8 +12,7 @@ const ModifyFoodModal = () => {
     }
     
     const [newFood, setNewFood] = useState(food)
-    console.log(newFood)
-    console.log(food)
+    
     const tempFood = food;
     //console.log(newFood)
     
@@ -54,7 +53,6 @@ const ModifyFoodModal = () => {
                     const {formattedValue, value} = values;
                     tempFood['price'] = formattedValue
                     setNewFood(tempFood)
-                    //console.log(tempFood)
                 })}/><span>VND</span>
             </Modal.Body>
             
