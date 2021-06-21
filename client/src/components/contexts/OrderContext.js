@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { apiUrl } from '../utils/constants'
 import axios from 'axios'
 
@@ -34,19 +34,6 @@ const OrderContextProvider = ({children}) => {
             order: order
         })
     }
-
-    // const removeFood = (foodName) => {
-    //     cartState.cart.forEach((item, index) => {
-    //         if (item.foodName === foodName) {
-    //             cartState.cart.splice(index, 1)
-    //         }
-    //     })
-    //     setCartState({
-    //         ...cartState,
-    //         cart: cartState.cart
-    //     })
-    //     updateTotal()
-    // }
 
     const sendPaymentRequest = async (orderId) => {
         try {

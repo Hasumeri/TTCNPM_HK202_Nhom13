@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { OrderContext } from '../contexts/OrderContext'
 
 const SingleOrder = ({order}) => {
@@ -8,8 +8,8 @@ const SingleOrder = ({order}) => {
         findOrder(orderId)
         setShowOrderModal(true)
     }
-    const cancelOrder = (orderId) => {
-        sendCancelOrderRequest({orderId})
+    const cancelOrder = async (orderId) => {
+        await sendCancelOrderRequest({orderId})
         window.location.reload()
     }
     

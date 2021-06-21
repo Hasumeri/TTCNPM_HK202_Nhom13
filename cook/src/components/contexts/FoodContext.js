@@ -6,15 +6,16 @@ export const FoodContext = createContext()
 
 const FoodContextProvider = ({children}) => {
     const [foodState, setFoodState] = useState({
-        food: [],
+        foodList: [],
     })
 
     const getFood = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/foodHandler/foods`)
+            const response = await axios.get(`${apiUrl}/foodHandler/foodscook`)
             if (response.data.success) {
                 setFoodState({
-                    food: response.data.food
+                    ...foodState,
+                    foodList: response.data.food
                 })
             }
         }
@@ -22,9 +23,17 @@ const FoodContextProvider = ({children}) => {
             console.log(error)
         }
     }
-    
 
-    const FoodContextData = {getFood, foodState}
+    const sendChangeFoodAvailRequest = async (foodId) => {
+        try {
+            await axios.post(`${apiUrl}/foodHandler/changeFoodAvail`, foodId)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const FoodContextData = {getFood, sendChangeFoodAvailRequest, foodState}
 
     return (
         <FoodContext.Provider value = {FoodContextData}>
