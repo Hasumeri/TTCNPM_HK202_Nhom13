@@ -4,7 +4,6 @@ import { FoodContext } from '../contexts/FoodContext'
 import Header from './Header'
 import RaiseAlert from './Alert'
 import { UserContext } from '../contexts/UserContext'
-import { Redirect } from "react-router-dom"
 
 const Cart = () => {
     const {cartState, decreaseQuantity, increaseQuantity, removeFood, sendOrderRequest} = useContext(FoodContext)

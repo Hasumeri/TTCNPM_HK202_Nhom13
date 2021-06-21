@@ -27,8 +27,6 @@ const FoodContextProvider = ({children}) => {
         localStorage.setItem(CART, JSON.stringify(cartState))
     }, [cartState])
 
-    // useEffect(() => updateTotal(), [cartState])
-
     const getFood = async () => {
         try {
             const response = await axios.get(`${apiUrl}/foodHandler/foods`)
