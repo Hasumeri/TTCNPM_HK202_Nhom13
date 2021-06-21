@@ -14,7 +14,6 @@ const ModifyFoodModal = () => {
     const [newFood, setNewFood] = useState(food)
     
     const tempFood = food;
-    //console.log(newFood)
     
     const _modifyFood = (e) => {
              
@@ -32,7 +31,7 @@ const ModifyFoodModal = () => {
         modifyFood(tempFood)
         closeDialog()
     }
-    //console.log(newFood)
+
 
     return (
         <Modal show={modifyFoodModal} animation={false} onHide={closeDialog}>

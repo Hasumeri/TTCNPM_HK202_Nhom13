@@ -2,8 +2,6 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom'
 import Home from './components/views/Home'
 import Signin from './components/views/Signin'
-import ModifyFood from './components/views/ModifyFood'
-import DeleteFood from './components/views/DeleteFood'
 import ManagerContextProvider from './components/contexts/ManagerContext'
 import FoodContextProvider from './components/contexts/FoodContext';
 
@@ -18,8 +16,6 @@ function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/signin' component={Signin} />
-              <Route exact path='/modifyfood' component={ModifyFood} />
-              <Route exact path='/deletefood' component={DeleteFood} />
 
             </Switch>
           
