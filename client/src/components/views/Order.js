@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, Modal, Form } from 'react-bootstrap'
+import { Button, Modal } from 'react-bootstrap'
 import Header from './Header'
 import RaiseAlert from './Alert'
 import { OrderContext } from '../contexts/OrderContext'
 import { UserContext } from '../contexts/UserContext'
-import { Redirect } from "react-router-dom"
 import SingleOrder from './SingleOrder'
 
 const Order = () => {
     const {orderState: {order, orderList}, getOrder, showOrderModal, setShowOrderModal, sendPaymentRequest} = useContext(OrderContext)
-    const {userState, loadUser} = useContext(UserContext)
+    const {loadUser} = useContext(UserContext)
     const [alert, setAlert] = useState(null)
 
     const closeDialog = () => {

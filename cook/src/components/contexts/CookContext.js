@@ -59,9 +59,10 @@ const CookContextProvider = ({children}) => {
             isAuthen: false,
             Cook: null
         })
+        window.location.reload()
     }
 
-    const CookContextData = {sendSigninForm, cookSignout, cookState}
+    const CookContextData = {sendSigninForm, cookSignout, loadCook, cookState}
 
     return (
         <CookContext.Provider value={CookContextData}>

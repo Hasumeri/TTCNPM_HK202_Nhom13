@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react'
 import axios from 'axios'
-import { apiUrl, TOKEN, CART } from '../utils/constants'
+import { apiUrl, TOKEN } from '../utils/constants'
 import setToken from '../utils/setToken'
 
 
@@ -73,6 +73,7 @@ const UserContextProvider = ({children}) => {
             isAuthen: false,
             user: null
         })
+        window.location.reload()
     }
 
     const UserContextData = {sendSignupForm, sendSigninForm, userSignout, loadUser, userState}
