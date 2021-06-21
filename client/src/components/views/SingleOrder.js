@@ -8,8 +8,8 @@ const SingleOrder = ({order}) => {
         findOrder(orderId)
         setShowOrderModal(true)
     }
-    const cancelOrder = (orderId) => {
-        sendCancelOrderRequest({orderId})
+    const cancelOrder = async (orderId) => {
+        await sendCancelOrderRequest({orderId})
         window.location.reload()
     }
     
